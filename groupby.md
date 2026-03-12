@@ -23,3 +23,11 @@ GROUP BY exam_id;
 ```
 
 4. Contare quanti corsi di laurea ci sono per ogni dipartimento
+
+```sql
+SELECT departments.name, COUNT(*) AS total_corsi_di_laurea
+FROM university.departments
+INNER JOIN university.degrees
+ON departments.id = degrees.department_id
+GROUP BY departments.id;
+```
