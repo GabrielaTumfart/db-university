@@ -54,8 +54,22 @@ INNER JOIN university.teachers
 ON course_teacher.teacher_id = teachers.id;
 ```
 
-6. Selezionare tutti i docenti che insegnano nel Dipartimento di
-   Matematica (54)
+6. Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica (54)
+
+```sql
+SELECT DISTINCT teachers.*
+FROM university.teachers
+INNER JOIN university.course_teacher
+ON teachers.id = course_teacher.teacher_id
+INNER JOIN university.courses
+ON course_teacher.course_id = courses.id
+INNER JOIN university.degrees
+ON courses.degree_id = degrees.id
+INNER JOIN university.departments
+ON degrees.department_id = departments.id
+WHERE departments.name = "Dipartimento di Matematica";
+```
+
 7. BONUS: Selezionare per ogni studente il numero di tentativi sostenuti
    per ogni esame, stampando anche il voto massimo. Successivamente,
    filtrare i tentativi con voto minimo 18.
