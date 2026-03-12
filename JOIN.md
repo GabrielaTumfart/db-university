@@ -1,4 +1,13 @@
 1. Selezionare tutti gli studenti iscritti al Corso di Laurea in Economia
+
+```sql
+SELECT students.*
+FROM university.students
+INNER JOIN university.degrees
+ON students.degree_id = degrees.id
+WHERE degrees.name = "Economia";
+```
+
 2. Selezionare tutti i Corsi di Laurea Magistrale del Dipartimento di
    Neuroscienze
 3. Selezionare tutti i corsi in cui insegna Fulvio Amato (id=44)
