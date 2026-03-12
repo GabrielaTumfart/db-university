@@ -8,8 +8,7 @@ ON students.degree_id = degrees.id
 WHERE degrees.name = "Economia";
 ```
 
-2. Selezionare tutti i Corsi di Laurea Magistrale del Dipartimento di
-   Neuroscienze
+2. Selezionare tutti i Corsi di Laurea Magistrale del Dipartimento di Neuroscienze
 
 ```sql
 SELECT degrees.*
@@ -30,9 +29,18 @@ ON courses.id = course_teacher.course_id
 WHERE course_teacher.teacher_id = 44;
 ```
 
-4. Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui
-   sono iscritti e il relativo dipartimento, in ordine alfabetico per cognome e
-   nome
+4. Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui sono iscritti e il relativo dipartimento, in ordine alfabetico per cognome e nome
+
+```sql
+SELECT students.*, degrees.*, departments.*
+FROM university.students
+INNER JOIN university.degrees
+ON students.degree_id = degrees.id
+INNER JOIN university.departments
+ON degrees.department_id = departments.id
+ORDER BY students.surname, students.name;
+```
+
 5. Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti
 6. Selezionare tutti i docenti che insegnano nel Dipartimento di
    Matematica (54)
